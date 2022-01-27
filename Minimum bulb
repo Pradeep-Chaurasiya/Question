@@ -1,0 +1,22 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return an integer
+    def solve(self, A, B):
+        count,i,n = 0,0,len(A)
+        
+        while i<n:
+            right = min(i+B-1,n-1)
+            left = max(i-B+1,0)
+            bulbfound = False
+            while(right>=left):
+                if A[right]==1:
+                    bulbfound = True
+                    break
+                right -= 1
+            if bulbfound is False:
+                return -1
+            count += 1
+            i = right+B
+        return count
+        
